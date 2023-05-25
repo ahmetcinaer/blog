@@ -9,9 +9,8 @@ class Article extends Model
 {
     use HasFactory;
 
-    protected $fillable= ['id','name'];
-
     function category(){
+        
         return $this->hasOne('App\Models\Category','id','category_id');
     }
 }
