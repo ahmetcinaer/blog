@@ -11,21 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('articles', function (Blueprint $table) {
-            $table->id();
-            $table->integer('category_id')->unsigned();
-            $table->string('title');
-            $table->string('image');
-            $table->longText('content');
-            $table->integer('hit')->default(0);
-            $table->string('slug');
-            $table->timestamps();
-            
-            $table->foreign('category_id')
-                  ->references('')
-                  ->on('categories')
-                  ->onDelete('cascade');
-        });
+        if(!Schema::hasTable('articles')){
+            Schema::create('articles', function (Blueprint $table) {
+                $table->id();
+                $table->unsignedBiginteger('category_id');
+                $table->string('title');
+                $table->string('image');
+                $table->longText('content');
+                $table->integer('hit')->default(0);
+                $table->string('slug');
+                $table->timestamps();
+                $table->foreign('category_id')
+                    ->references('')
+                    ->on('categories')
+                    ->onDelete('cascade');
+            });
+        }
     }
 
     /**

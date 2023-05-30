@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 //Models
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Page;
 
 
 class Homepage extends Controller
@@ -16,6 +17,7 @@ class Homepage extends Controller
         $data['articles'] = Article::orderBy('created_at','DESC')->SimplePaginate(3);
         $data['articles']->withPath(url('/sayfa'));
         $data['categories']=Category::inRandomOrder()->get();
+        $data['pages']=Page::orderBy('order','ASC')->get();
         return view('front.homepage',$data);
     }
 

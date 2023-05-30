@@ -18,7 +18,7 @@ class ArticleSeeder extends Seeder
             DB::table('articles')->insert([
                 'category_id'=>rand(1,7),
                 'title'=>$title,
-                'image'=>fake()->imageUrl(800, 400,'cats', true, 'ARTECHON'),
+                'image'=>fake()->imageUrl(800, 400,'cats', true),
                 'content'=>fake()->paragraph(6),
                 'slug'=>$slug=Str::slug($title),
                 'created_at'=>fake()->dateTime('now'),
