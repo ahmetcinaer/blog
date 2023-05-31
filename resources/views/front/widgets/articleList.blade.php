@@ -1,7 +1,7 @@
 @if(count($articles)>0)
     @foreach($articles as $article)
     <div class="post-preview">
-        <a href="{{route('single', [$article->category->slug ,$article->slug])}}">
+        <a href="{{route('single',[$article->category->slug , $article->slug])}}">
             <h2 class="post-title">{{$article->title}}</h2>
             <img src="{{$article->image}}">
             <h3 class="post-subtitle">{{Str::limit($article->content, 80)}}</h3>
